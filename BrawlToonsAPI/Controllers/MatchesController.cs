@@ -4,6 +4,8 @@ using System.Numerics;
 using Microsoft.EntityFrameworkCore;
 namespace BrawlToonsAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class MatchesController : ControllerBase
     {
         private readonly GameContext _context;
