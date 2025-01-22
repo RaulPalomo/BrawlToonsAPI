@@ -16,7 +16,7 @@ namespace BrawlToonsAPI.Controllers
         }
 
 
-        [HttpGet("{id}")]
+        [HttpGet("GET/{id}")]
         public async Task<ActionResult<Characters>> GetCharacter(int id)
         {
             var character = await _context.characters.FindAsync(id);

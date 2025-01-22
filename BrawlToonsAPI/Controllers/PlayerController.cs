@@ -17,7 +17,7 @@ namespace BrawlToonsAPI.Controllers
         }
 
         // GET: api/players/{id}
-        [HttpGet("{id}")]
+        [HttpGet("GET/{id}")]
         public async Task<ActionResult<Player>> GetPlayer(int id)
         {
             var player = await _context.players.FindAsync(id);
@@ -38,7 +38,7 @@ namespace BrawlToonsAPI.Controllers
         }
 
         // verify password GET
-        [HttpGet ("{username},{password}")]
+        [HttpGet ("GET/{username},{password}")]
         public async Task<ActionResult<Player>> VerifyUser(string username, string password)
         {
             var player = await _context.players.FirstOrDefaultAsync(p => p.username == username); ;
@@ -55,5 +55,23 @@ namespace BrawlToonsAPI.Controllers
 
             return Ok(player);
         }
+
+        [HttpPut("UPDATE")]
+        public async Task<IActionResult> Update([FromBody] Player playerUpdated)
+        {
+            var player = await _context.players.FindAsync(playerUpdated.player_id);
+            if (player == null)
+            {
+                return NotFound();
+            }
+
+            // Actualiza las propiedades del objeto encontrado
+            _context.Entry(player).CurrentValues.SetValues(playerUpdated);
+
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+
     }
 }
