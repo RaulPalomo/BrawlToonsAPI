@@ -24,7 +24,7 @@ namespace BrawlToonsAPI
             modelBuilder.Entity<Characters>()
                 .HasKey(c=>c.character_id);
             modelBuilder.Entity<PlayerCharacter>()
-                .HasKey(pc => pc.player_id.ToString() + pc.character_id.ToString());
+                .HasKey(pc => new { pc.player_id, pc.character_id });
         }
     }
 }
