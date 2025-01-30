@@ -27,6 +27,16 @@ namespace BrawlToonsAPI.Controllers
             return Ok(character);
         }
 
+        [HttpGet("SortedByWins")]
+        public async Task<ActionResult<IEnumerable<Characters>>> GetCharactersSortedByWins()
+        {
+            var characters = await _context.characters
+                .OrderByDescending(c => c.total_wins)
+                .ToListAsync();
+
+            return Ok(characters);
+        }
+
 
         [HttpPut("UpdateWins/{id}")]
         public async Task<IActionResult> UpdateWins(int id)
