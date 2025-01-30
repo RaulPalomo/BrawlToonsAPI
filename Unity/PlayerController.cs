@@ -3,11 +3,15 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
+//referencia a los modelos
 using BrawlToonsAPI.Models;
 
 public class PlayerController : MonoBehaviour
 {
-    private const string ApiBaseUrl = "http://localhost:5000/api/player"; // Cambia por la URL de tu API
+    //url básica de la api
+    private const string ApiBaseUrl = "http://localhost:5000/api/player";
+
+    //funciones para llamar a las corrutinas
     public void GetPlayerFunc(int id)
     {
         StartCoroutine(GetPlayer(id));
@@ -30,7 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         StartCoroutine(VerifyUser(username, passwd));
     }
-    // GET: api/player/GET/{id}
+    // Implementa endpoint GET: api/player/GET/{id}
     public IEnumerator GetPlayer(int id)
     {
         Debug.Log("aaa");
@@ -50,7 +54,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // POST: api/player
+    // Implementa endpoint POST: api/player
     public IEnumerator AddPlayer(Player player)
     {
         string jsonData = JsonConvert.SerializeObject(player);
@@ -74,7 +78,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // GET: api/player/GET/{username},{password}
+    // Implementa endpoint GET: api/player/GET/{username},{password}
     public IEnumerator VerifyUser(string username, string password)
     {
         using (UnityWebRequest request = UnityWebRequest.Get($"{ApiBaseUrl}/GET/{username},{password}"))
@@ -92,7 +96,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // PUT: api/player/UPDATE
+    // Implementa endpoint PUT: api/player/UPDATE
     public IEnumerator UpdatePlayer(Player player)
     {
         string jsonData = JsonConvert.SerializeObject(player);
