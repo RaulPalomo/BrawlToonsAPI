@@ -3,12 +3,14 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
+//Referéncia a las classes modelo
 using BrawlToonsAPI.Models;
 
 public class MatchesController : MonoBehaviour
 {
     private const string ApiBaseUrl = "http://localhost:5000/api/Matches";
 
+    //Funciones para llamar a las corrutinas
     public void PostMatchFunc(Matches match)
     {
         StartCoroutine(PostMatch(match));
@@ -19,6 +21,7 @@ public class MatchesController : MonoBehaviour
         StartCoroutine(GetMatch(matchId));
     }
 
+    // Implementa el POST de match
     private IEnumerator PostMatch(Matches match)
     {
         string jsonData = JsonConvert.SerializeObject(match);
@@ -38,6 +41,7 @@ public class MatchesController : MonoBehaviour
         }
     }
 
+    // Implementa GET para recuperar una partida
     private IEnumerator GetMatch(int matchId)
     {
         using (UnityWebRequest request = UnityWebRequest.Get($"{ApiBaseUrl}/{matchId}"))
