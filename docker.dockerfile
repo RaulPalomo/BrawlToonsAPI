@@ -3,7 +3,8 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 # Copiar y restaurar dependencias
-COPY *.csproj ./
+COPY BrawlToonsAPI/*.csproj ./BrawlToonsAPI/
+WORKDIR /app/BrawlToonsAPI
 RUN dotnet restore
 
 # Copiar el resto del código y compilar
