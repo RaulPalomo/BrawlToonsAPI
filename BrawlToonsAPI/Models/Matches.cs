@@ -2,6 +2,7 @@
 {
     public class Matches
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int match_id { get; set; }
         public int player_1_id { get; set; }
         public int player_2_id { get; set; }
