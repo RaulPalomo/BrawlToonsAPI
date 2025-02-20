@@ -1,4 +1,6 @@
-﻿namespace BrawlToonsAPI.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BrawlToonsAPI.Models
 {
     public class Matches
     {
