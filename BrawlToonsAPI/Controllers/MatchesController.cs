@@ -20,6 +20,7 @@ namespace BrawlToonsAPI.Controllers
             _context.matches.Add(match);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetMatch), new { id = match.match_id }, match);
+
         }
 
         [HttpGet("{id}")]

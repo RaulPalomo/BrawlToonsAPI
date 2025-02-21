@@ -11,7 +11,7 @@ namespace BrawlToonsAPI
 
         public DbSet<Characters> characters { get; set; }
 
-        public DbSet<PlayerCharacter> playerCharacters { get; set; }
+        public DbSet<PlayerCharacter> player_character { get; set; }
 
         public GameContext(DbContextOptions<GameContext> options) : base(options) { }
 
