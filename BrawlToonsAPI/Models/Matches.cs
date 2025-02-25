@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-
 namespace BrawlToonsAPI.Models
 {
     public class Matches
@@ -9,6 +8,8 @@ namespace BrawlToonsAPI.Models
         public int player_1_id { get; set; }
         public int player_2_id { get; set; }
         public int winner_id { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime date { get; set; }
     }
 }

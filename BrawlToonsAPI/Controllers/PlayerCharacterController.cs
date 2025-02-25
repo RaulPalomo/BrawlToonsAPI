@@ -18,7 +18,7 @@ namespace BrawlToonsAPI.Controllers
         //metodo que recoje las stats del jugador con el personaje
         public async Task<ActionResult<PlayerCharacter>> GetPlayerCharacterStats(int player_id, int character_id)
         {
-            var playerCharacter = await _context.playerCharacters
+            var playerCharacter = await _context.player_character
                 .FirstOrDefaultAsync(pc => pc.player_id == player_id && pc.character_id == character_id);
 
             if (playerCharacter == null)
@@ -32,7 +32,7 @@ namespace BrawlToonsAPI.Controllers
         [HttpPost("POST")]
         public async Task<ActionResult<PlayerCharacter>> AddPlayerCharacter(PlayerCharacter pc)
         {
-            _context.playerCharacters.Add(pc);
+            _context.player_character.Add(pc);
             await _context.SaveChangesAsync();
 
             // Utiliza el nombre de la acción y los parámetros para crear la ruta correcta
@@ -45,7 +45,7 @@ namespace BrawlToonsAPI.Controllers
         [HttpPut("UPDATE")]
         public async Task<IActionResult> Update([FromBody] PlayerCharacter playerCharUpdated)
         {
-            var playerCharacter = await _context.playerCharacters
+            var playerCharacter = await _context.player_character
                 .FirstOrDefaultAsync(pc => pc.player_id == playerCharUpdated.player_id && pc.character_id == playerCharUpdated.character_id);
             if (playerCharacter == null)
             {

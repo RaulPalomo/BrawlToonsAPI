@@ -32,5 +32,22 @@ namespace BrawlToonsAPI.Controllers
             }
             return Ok(match);
         }
+
+        [HttpGet("last/{playerId}")]
+        public async Task<ActionResult<IEnumerable<Matches>>> GetLast4MatchesByPlayer(int playerId)
+        {
+            List<Matches> matches = await _context.matches
+                .Where(m => m.player_1_id == playerId || m.player_2_id == playerId)
+                .OrderByDescending(m => m.match_id)
+                .Take(4)
+                .ToListAsync();
+
+            if (matches == null || !matches.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(matches);
+        }
     }
 }

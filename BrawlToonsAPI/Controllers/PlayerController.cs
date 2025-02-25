@@ -45,7 +45,44 @@ namespace BrawlToonsAPI.Controllers
 
             _context.players.Add(player);
             await _context.SaveChangesAsync();
+            PlayerCharacter pc1 = new PlayerCharacter()
+            {
+                player_id = player.player_id,
+                character_id = 0,
+                wins = 0,
+                defeats = 0,
+            };
+            PlayerCharacter pc2 = new PlayerCharacter()
+            {
+                player_id = player.player_id,
+                character_id = 1,
+                wins = 0,
+                defeats = 0,
+            };
+            PlayerCharacter pc3 = new PlayerCharacter()
+            {
+                player_id = player.player_id,
+                character_id = 2,
+                wins = 0,
+                defeats = 0,
+            };
+            PlayerCharacter pc4 = new PlayerCharacter()
+            {
+                player_id = player.player_id,
+                character_id = 3,
+                wins = 0,
+                defeats = 0,
+            };
+            _context.player_character.Add(pc1);
+            await _context.SaveChangesAsync();
+            _context.player_character.Add(pc2);
+            await _context.SaveChangesAsync();
+            _context.player_character.Add(pc3);
+            await _context.SaveChangesAsync();
+            _context.player_character.Add(pc4);
+            await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetPlayer), new { id = player.player_id }, player);
+
         }
 
         // verify password GET
