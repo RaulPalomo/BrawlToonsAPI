@@ -11,7 +11,7 @@ BrawlToonsAPI is a project designed to provide an API that interacts with data r
 - **Entity Framework Core**: An Object-Relational Mapper (ORM) for .NET that simplifies database interactions by allowing developers to work with databases using C# objects instead of raw SQL queries. This enhances productivity and maintainability by enabling code-first database management.
 
 ## 🚀 Usage Guide 🚀
-1. Download the API for login.  
+1. Download the API repository.  
 2. Open the API project in **Visual Studio Community**.  
 3. Build the solution and execute it.  
 
